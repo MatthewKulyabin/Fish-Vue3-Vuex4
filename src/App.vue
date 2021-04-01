@@ -1,17 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <Username />
+  <Game v-if="username" />
+  <GameOver v-if="!time" /> <!-- !time --> 
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import {mapState, mapGetters} from 'vuex';
+
+import Username from './components/Username';
+import Game from './components/Game';
+import GameOver from './components/GameOver';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    Username,
+    Game,
+    GameOver,
+  },
+  computed: {
+    ...mapGetters([
+      'username',
+      'time'
+    ]),
+  },
+};
 </script>
 
 <style>
@@ -22,5 +35,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.hide {
+  display: none;
 }
 </style>
