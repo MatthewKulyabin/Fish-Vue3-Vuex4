@@ -97,7 +97,7 @@ export const store = createStore({
 				commit('renderFish');
 				commit('decreaseTime');
 				commit('fishMove');
-			}, 5);
+			}, 500);
 		},
 	},
 });
